@@ -43,10 +43,10 @@
   </g>
 
   <!-- Icon glow -->
-  <circle cx="315" cy="100" r="65" fill="url(#iconGlow)"/>
+  <circle cx="220" cy="100" r="65" fill="url(#iconGlow)"/>
 
   <!-- Open book / directory icon -->
-  <g transform="translate(315, 94)" fill="none" stroke="url(#accent)" stroke-linecap="round" stroke-linejoin="round">
+  <g transform="translate(220, 94)" fill="none" stroke="url(#accent)" stroke-linecap="round" stroke-linejoin="round">
     <!-- Left page -->
     <path d="M-4,-30 L-36,-26 C-39,-25.5 -42,-23 -42,-20 L-42,22 C-42,25 -39,27.5 -36,27 L-4,23 Z" stroke-width="1.8" opacity="0.7" fill="rgba(96,125,139,0.04)"/>
     <!-- Right page -->
@@ -67,17 +67,17 @@
   </g>
 
   <!-- Title -->
-  <text x="590" y="82" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="700" fill="#ECEFF1" text-anchor="middle" letter-spacing="-0.5">
+  <text x="540" y="82" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="42" font-weight="700" fill="#ECEFF1" text-anchor="middle" letter-spacing="-0.5">
     search-by-surname
   </text>
 
   <!-- Tagline -->
-  <text x="590" y="115" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#78909C" text-anchor="middle" letter-spacing="0.5">
+  <text x="540" y="115" font-family="'Segoe UI', 'Helvetica Neue', Arial, sans-serif" font-size="14.5" fill="#78909C" text-anchor="middle" letter-spacing="0.5">
     Batch search Spanish telephone directories by surname
   </text>
 
   <!-- Tech tags -->
-  <g transform="translate(590, 148)" text-anchor="middle">
+  <g transform="translate(540, 148)" text-anchor="middle">
     <!-- R badge -->
     <rect x="-95" y="-11" width="28" height="18" rx="3" fill="rgba(39,109,195,0.15)" stroke="#276DC3" stroke-width="0.8" opacity="0.6"/>
     <text x="-81" y="3" font-family="'SF Mono', 'Fira Code', monospace" font-size="10" fill="#276DC3" text-anchor="middle" font-weight="600" opacity="0.7">R</text>
