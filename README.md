@@ -1,93 +1,42 @@
 <p align="center">
-  <img src="docs/images/banner.svg" alt="search-by-surname banner" width="900"/>
+  <img src="docs/images/banner.svg" alt="search-by-surname" width="900"/>
 </p>
 
 <p align="center">
-  <a href="https://www.r-project.org/"><img src="https://img.shields.io/badge/R-%3E%3D%203.6-276DC3?logo=r&logoColor=white" alt="R >= 3.6"/></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/License-GPL--3.0-blue.svg" alt="License: GPL-3.0"/></a>
-  <img src="https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey" alt="Platform"/>
-  <img src="https://img.shields.io/badge/Status-Archived-orange" alt="Status: Archived"/>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/GeiserX/search-by-surname" alt="License"/></a>
   <a href="https://github.com/GeiserX/awesome-spain#readme"><img src="https://img.shields.io/badge/listed%20on-awesome--spain-c60b1e?style=flat-square&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDIwIDE0Ij48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMTQiIGZpbGw9IiNjNjBiMWUiLz48cmVjdCB5PSIzLjUiIHdpZHRoPSIyMCIgaGVpZ2h0PSI3IiBmaWxsPSIjZmZjNDAwIi8+PC9zdmc+&labelColor=ffc400" alt="listed on awesome-spain"/></a>
 </p>
 
 ---
 
-An R-based tool for batch searching Spanish public telephone directories by surname. It scrapes surname lists, generates gender-aware variants, constructs search URLs for multiple directory services, and writes them to batch files for systematic querying.
+An R script that prepares batch lookups in Spanish public telephone directories by surname. It scrapes a list of Bulgarian surnames, adds their feminine forms, scrapes the ABCtelefonos index pages of six regions and writes both to numbered text files that you then search by hand.
 
 Originally written during the early days of COVID-19 (2020) and released publicly in 2025.
 
 ## Features
 
-- **Multi-service support** -- queries both Guiatel/Infobel and ABCtelefonos directory services.
-- **Gender-aware surname variants** -- automatically generates feminine forms for surnames following Slavic naming conventions (e.g., appending `-a` to surnames ending in `-v`).
-- **Batch file generation** -- splits search URLs into numbered batch files to facilitate manual querying and avoid rate limiting.
-- **Multi-region coverage** -- targets six Spanish provinces/regions in a single run.
-- **Web scraping pipeline** -- extracts surname lists and directory indexes directly from web sources using `rvest`.
+- **Two directory services** -- builds ABCtelefonos index URLs for each region; the Guiatel/Infobel URL builder is present but commented out, so those files hold only surnames.
+- **Gender-aware surname variants** -- generates feminine forms for surnames following Slavic naming conventions (appending `-a` to surnames ending in `-v`).
+- **Batch file generation** -- splits the lists into numbered batch files for manual querying.
+- **Multi-region coverage** -- targets six Spanish provinces/regions in a single run: Zaragoza, Murcia, Granada, Asturias, Almería and Albacete.
+- **Web scraping** -- extracts the surname list and the directory indexes with `rvest`.
 
-## Requirements
+## Quick start
 
-| Dependency | Version | Purpose |
-|---|---|---|
-| [R](https://www.r-project.org/) | >= 3.6 | Runtime |
-| [tidyverse](https://www.tidyverse.org/) | latest | Data manipulation and functional utilities |
-| [rvest](https://rvest.tidyverse.org/) | latest | HTML parsing and web scraping |
-| [stringi](https://stringi.gagolewski.com/) | latest | String processing and substring operations |
-
-Install all dependencies in R:
+You need R with tidyverse, rvest and stringi. Clone the repo, edit the `write_lines()` paths in [`search.R`](search.R) (they point at a Windows Google Drive folder) and create the three `setwd()` folders (`~/Cuarentena/Almeria`, `~/Cuarentena/Albacete`, `~/Cuarentena/Granada`) or edit those lines, then in R:
 
 ```r
 install.packages(c("tidyverse", "rvest", "stringi"))
-```
-
-## Usage
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/GeiserX/search-by-surname.git
-cd search-by-surname
-```
-
-2. Open `search.R` and adjust the output paths in `write_lines()` calls to match your local directory structure. By default, the script writes to a Windows path under Google Drive.
-
-3. Run the script in R or RStudio:
-
-```r
 source("search.R")
 ```
 
-The script will:
-- Scrape surname lists from the configured web source.
-- Generate gender-aware surname variants.
-- Build search URLs for each surname and region.
-- Write numbered batch files to the specified output directories.
+What the script writes and its limits: [Usage](docs/usage.md).
 
-## Regions Covered
+## Documentation
 
-| Region | Guiatel/Infobel | ABCtelefonos |
-|---|---|---|
-| Zaragoza | Yes | Yes |
-| Murcia | Yes | Yes |
-| Granada | Yes | Yes |
-| Asturias | Yes | Yes |
-| Almeria | Yes | Yes |
-| Albacete | Yes | Yes |
+- [Usage](docs/usage.md): dependencies, what the script writes, regions and sources, and its limitations.
 
-## Data Sources
-
-- **Surname lists** -- scraped from publicly available wiki pages with surname databases.
-- **Guiatel / Infobel** -- Spanish white pages telephone directory (`blancas.paginasamarillas.es`).
-- **ABCtelefonos** -- independent Spanish telephone directory (`abctelefonos.com`).
-
-## Limitations
-
-- Output paths are hardcoded and must be manually adjusted before running.
-- The Guiatel/Infobel URL construction is commented out in the source; it requires uncommenting and may need updating if the service has changed its URL structure since 2020.
-- No built-in rate limiting or request throttling -- batch files are intended for manual use.
-- Surname source is specific to Bulgarian surnames; adapting to other origins requires changing the scraping source.
-- The targeted directory services may have changed their structure, imposed CAPTCHAs, or shut down since the script was originally written.
-
-## Legal and Ethical Notice
+## Disclaimer
 
 This tool queries **publicly available** telephone directory services. It is provided strictly for educational and research purposes. Users are responsible for complying with all applicable laws and the terms of service of the queried platforms. The author assumes no liability for misuse.
 
@@ -95,4 +44,4 @@ Automated scraping of directory services may violate their terms of service. Use
 
 ## License
 
-This project is licensed under the [GNU General Public License v3.0](LICENSE).
+[GPL-3.0-or-later](LICENSE)
