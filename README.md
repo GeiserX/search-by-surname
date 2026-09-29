@@ -23,7 +23,7 @@ Originally written during the early days of COVID-19 (2020) and released publicl
 
 ## Quick start
 
-You need R with tidyverse, rvest and stringi. Clone the repo, edit the `write_lines()` paths in [`search.R`](search.R) (they point at a Windows Google Drive folder), then in R:
+You need R with tidyverse, rvest and stringi. Clone the repo, edit the `write_lines()` paths in [`search.R`](search.R) (they point at a Windows Google Drive folder) and create the three `setwd()` folders (`~/Cuarentena/Almeria`, `~/Cuarentena/Albacete`, `~/Cuarentena/Granada`) or edit those lines, then in R:
 
 ```r
 install.packages(c("tidyverse", "rvest", "stringi"))

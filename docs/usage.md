@@ -33,7 +33,7 @@ Sources: the surname list comes from a public wiki page of Bulgarian surnames; G
 
 ## Limitations
 
-- Output paths are hardcoded and must be adjusted by hand before running.
+- Output paths are hardcoded and must be adjusted by hand before running, and the Almería, Albacete and Granada blocks `setwd()` into `~/Cuarentena/<region>` folders that must exist.
 - The Guiatel/Infobel URL construction is commented out in the source, so the Guiatel/Infobel files hold only surnames. It needs uncommenting and may need updating if the service has changed its URL structure since 2020.
 - No built-in rate limiting or request throttling; the batch files are meant for manual use.
 - The surname source is specific to Bulgarian surnames; other origins need a different scraping source.
